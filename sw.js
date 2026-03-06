@@ -1,4 +1,4 @@
-const CACHE_NAME = 'equora-v12';
+const CACHE_NAME = 'equora-v16';
 const ASSETS = [
   './', './index.html', './script.js', './manifest.json',
   './assets/portada.png', './assets/logo192.png', './assets/logo512.png',

@@ -1,7 +1,7 @@
 {
   "name": "Equora",
   "short_name": "Equora",
-  "description": "Scoring calculator for Equora ecosystems",
+  "description": "Professional scoring tool for Harmonies",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#064e3b">
     <title>Equora</title>
-    <link rel="manifest" href="manifest.json?v=12">
+    <link rel="manifest" href="manifest.json?v=16">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background: #f1f5f9; }
+        body { font-family: 'Inter', sans-serif; background: #f1f5f9; user-select: none; }
         .bg-equora { background: linear-gradient(135deg, #064e3b 0%, #0c4a6e 100%); }
         .hidden { display: none; }
     </style>
 </head>
 <body>
-    <!-- Selector de Idioma (Banderas) -->
     <div class="fixed top-4 right-4 z- flex gap-2">
         <button onclick="setLanguage('es')" class="text-2xl hover:scale-110 transition-transform">🇪🇸</button>
         <button onclick="setLanguage('en')" class="text-2xl hover:scale-110 transition-transform">🇬🇧</button>
@@ -24,9 +23,7 @@
     <div id="welcome-screen" class="fixed inset-0 z-50 bg-equora flex flex-col items-center justify-center p-8 text-white">
         <img src="assets/portada.png" class="w-64 mb-8 rounded-3xl shadow-2xl">
         <h1 class="text-6xl font-black uppercase italic tracking-tighter">Equora</h1>
-        <div class="grid grid-cols-2 gap-4 w-full max-w-xs mt-10" id="player-buttons">
-            <!-- Botones generados por JS -->
-        </div>
+        <div class="grid grid-cols-2 gap-4 w-full max-w-xs mt-10" id="player-buttons"></div>
     </div>
 
     <div id="step-names" class="hidden max-w-md mx-auto bg-white rounded-3xl shadow-xl p-8 text-center mt-10">
@@ -41,7 +38,6 @@
             <span id="step-indicator" class="text-[10px] font-bold bg-emerald-100 px-3 py-1 rounded-full text-emerald-700"></span>
         </div>
         <div class="p-6">
-            <!-- Paso 1: Paisajes -->
             <div id="recuento1" class="recuento-step space-y-6">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-green-50 p-4 rounded-2xl border border-green-100">
@@ -50,17 +46,17 @@
                     </div>
                     <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                         <label id="lbl-mountains" class="block text-[10px] font-bold text-slate-700 uppercase mb-2"></label>
-                        <input id="m2" type="number" placeholder="H2" class="w-full p-2 rounded-lg text-sm mb-1"><input id="m3" type="number" placeholder="H3" class="w-full p-2 rounded-lg text-sm">
+                        <input id="m1" type="number" placeholder="H1" class="w-full p-2 rounded-lg text-sm mb-1"><input id="m2" type="number" placeholder="H2" class="w-full p-2 rounded-lg text-sm mb-1"><input id="m3" type="number" placeholder="H3" class="w-full p-2 rounded-lg text-sm">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-yellow-50 p-4 rounded-2xl border border-yellow-100">
                         <label id="lbl-fields" class="block text-[10px] font-bold text-yellow-700 uppercase mb-2"></label>
-                        <input id="fld" type="number" class="w-full p-2 rounded-lg text-sm">
+                        <input id="fld" type="number" class="w-full p-2 rounded-lg text-sm" placeholder="Groups">
                     </div>
                     <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
                         <label id="lbl-buildings" class="block text-[10px] font-bold text-red-700 uppercase mb-2"></label>
-                        <input id="bld" type="number" class="w-full p-2 rounded-lg text-sm">
+                        <input id="bld" type="number" class="w-full p-2 rounded-lg text-sm" placeholder="Valid">
                     </div>
                 </div>
                 <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 flex gap-2">
@@ -69,23 +65,16 @@
                 </div>
                 <button onclick="nextRecuentoStep(2)" class="w-full bg-slate-800 text-white font-black py-4 rounded-2xl uppercase tracking-widest" id="btn-to-animals"></button>
             </div>
-            <!-- Paso 2: Fauna -->
-            <div id="recuento2" class="recuento-step hidden space-y-6">
-                <div class="grid grid-cols-3 gap-3" id="fauna-grid"></div>
-                <button onclick="nextRecuentoStep(3)" class="w-full bg-slate-800 text-white font-black py-4 rounded-2xl uppercase tracking-widest" id="btn-to-final"></button>
-            </div>
-            <!-- Paso 3: Espíritus y Desempate -->
+            <div id="recuento2" class="recuento-step hidden space-y-6"><div class="grid grid-cols-3 gap-3" id="fauna-grid"></div><button onclick="nextRecuentoStep(3)" class="w-full bg-slate-800 text-white font-black py-4 rounded-2xl uppercase" id="btn-to-final"></button></div>
             <div id="recuento3" class="recuento-step hidden space-y-6">
                 <div class="bg-purple-50 p-5 rounded-3xl border border-purple-100 text-center">
-                    <div class="flex items-center justify-between"><span id="txt-spirit-achieved" class="text-xs font-black text-purple-800 uppercase italic"></span><input type="checkbox" id="spirit-check" onchange="toggleSpiritUI()" class="w-6 h-6"></div>
-                    <div id="spirit-ui" class="hidden mt-4 space-y-4">
-                        <select id="spirit-type" onchange="updateSpiritLogic()" class="w-full p-3 rounded-xl text-sm font-bold"></select>
-                        <input id="spirit-manual-pts" type="number" placeholder="Pts" class="hidden w-full p-3 rounded-xl">
-                    </div>
+                    <label id="lbl-spirit-manual" class="block text-[10px] font-black text-purple-800 uppercase italic mb-2"></label>
+                    <input id="spirit-manual-pts" type="number" placeholder="0" class="w-full p-3 rounded-xl text-center font-black border-none shadow-inner bg-white">
+                    <div class="flex items-center justify-center mt-3 gap-2"><span id="txt-spirit-completed" class="text-[9px] font-bold text-slate-400"></span><input type="checkbox" id="spirit-check" class="w-4 h-4"></div>
                 </div>
                 <div class="bg-amber-50 p-5 rounded-3xl border border-amber-100 text-center">
                     <label id="lbl-tiebreaker" class="block text-[10px] font-black text-amber-800 uppercase italic mb-2"></label>
-                    <input id="tie-cubes" type="number" class="w-full p-3 rounded-xl text-center font-black border-none shadow-inner">
+                    <input id="tie-cubes" type="number" class="w-full p-3 rounded-xl text-center font-black border-none shadow-inner bg-white">
                 </div>
                 <button id="save-btn" onclick="savePlayerData()" class="w-full bg-emerald-600 text-white font-black py-5 rounded-2xl shadow-xl uppercase italic tracking-widest"></button>
             </div>
