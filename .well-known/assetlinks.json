@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.purplephantomludus.twa",
+        "sha256_cert_fingerprints": ["61:3A:A9:AB:2A:F3:0A:BE:92:B7:F6:E8:8F:57:AF:EE:C6:6A:4B:7B:F7:37:5F:98:B8:20:84:A5:99:75:F8:77"]
+      }
+    }]
