@@ -1,11 +1,12 @@
-[[
+[
   {
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
       "package_name": "com.equora.app",
-      "sha256_cert_fingerprints":
-      [""E4:C4:CB:26:18:C5:30:2C:81:EE:97:46:4E:31:C1:AA:01:A4:AF:0D:A9:1B:E5:15:C6:39:2A:20:95:44:2D:25""]
+      "sha256_cert_fingerprints": [
+        "E4:C4:CB:26:18:C5:30:2C:81:EE:97:46:4E:31:C1:AA:01:A4:AF:0D:A9:1B:E5:15:C6:39:2A:20:95:44:2D:25"
+      ]
     }
   }
 ]
