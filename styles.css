@@ -10,4 +10,30 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+
+}
+.app-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px; /* Espaciado generoso al final */
+    background-color: transparent; 
+    color: rgba(44, 62, 80, 0.8); /* El color de Equora con suavidad */
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-avatar {
+    width: 50px;  /* Tamaño ideal para que se vea claro pero sutil */
+    height: 50px;
+    border-radius: 50%; /* Lo hace perfectamente circular */
+    margin-bottom: 12px;
+    border: 2px solid #2c3e50; /* Marco con el color de la marca */
+    object-fit: cover; /* Evita que la imagen se deforme */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave profesional */
+}
+
+.app-footer p {
+    margin: 0;
+    font-family: sans-serif; /* O la fuente que uses en la app */
 }
